@@ -484,8 +484,9 @@
 </section>
   <!-- ====== Pricing Section End -->
 
-     <!-- ====== Contact Start ====== -->
-     <section id="contact" class="relative py-20 md:py-[120px]">
+
+    <!-- ====== Contact Start ====== -->
+    <section id="contact" class="relative py-20 md:py-[120px]">
       <div
         class="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"
       ></div>
@@ -505,7 +506,7 @@
                 <h2
                   class="max-w-[260px] text-[35px] font-semibold leading-[1.14] text-dark dark:text-white"
                 >
-                  You can use in-built option to send me a message
+                  Let me help you with your studies
                 </h2>
               </div>
               <div class="mb-12 flex flex-wrap justify-between lg:mb-0">
@@ -576,7 +577,7 @@
               >
                 Send me a Message
               </h3>
-              <form>
+              <form id="contact-form">
                 <div class="mb-[22px]">
                   <label
                     for="fullName"
@@ -638,7 +639,7 @@
                   ></textarea>
                 </div>
                 <div class="mb-0">
-                  <button
+                  <button href="javascript:void(0)"
                     type="submit"
                     class="inline-flex items-center justify-center rounded-md bg-primary px-10 py-3 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-blue-dark"
                   >
@@ -1018,6 +1019,29 @@
 
   <!-- ====== All Scripts -->
   <script src="assets/js/main.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("P3Sepq_EdBBy98DBV"); // Replace with your EmailJS user ID
+       })();
+    </script>
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
+        // Replace these with your EmailJS service ID and template ID
+        const serviceID = 'service_eso6a4s';
+        const templateID = 'template_53yjjru';
+    
+        emailjs.sendForm(serviceID, templateID, this)
+          .then(() => {
+            alert('Message sent successfully!');
+            this.reset();
+          }, (err) => {
+            alert('Failed to send message. Error: ' + JSON.stringify(err));
+          });
+      });
+    </script>
 </body>
 
 </html>
